@@ -1,4 +1,4 @@
-# 🦁 FURIApp Connect
+# 🐈‍⬛ FURIApp Connect
 
 **FURIApp Connect** é um aplicativo web criado para o desafio técnico da FURIA Tech. Seu objetivo é conectar fãs da equipe FURIA através de perfis personalizados e interação inteligente com uma IA que entende o universo FURIA.
 
