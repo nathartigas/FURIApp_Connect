@@ -33,7 +33,6 @@ A aplicação inclui um chatbot local baseado em modelos LLM servidos via **Olla
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Ollama](https://ollama.com/) – para LLM local
-- [Vite](https://vitejs.dev/)
 
 ## 📁 Estrutura de Pastas
 
