@@ -95,4 +95,4 @@ Este projeto está sob a licença MIT.
 ## 👩‍💻 Desenvolvedora
 
 - **Nathalia Artigas**  
-  [LinkedIn](https://www.linkedin.com/in/nathalia-artigas/) | [GitHub](https://github.com/nathartigas)
+  [LinkedIn]([https://www.linkedin.com/in/nathalia-artigas/](https://www.linkedin.com/in/nathalia-calazans-artigas-741b0b277/)) | [GitHub](https://github.com/nathartigas)
