@@ -41,46 +41,62 @@ export function FuriaAIChat() {
         setInput("")
         setIsLoading(true)
 
+        function formatBold(text: string): string {
+            return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        }
+
+
         try {
             // Prepara o contexto para a IA
             const prompt = `
-            Você é um assistente apaixonado pela FURIA Esports, especializado em Counter-Strike 2.
-            
-            Contexto atualizado do time (abril de 2025):
-            
-            {
-              "team": "FURIA Esports",
-              "coach": "Sid 'sidde' Macedo",
-              "players": [
-                { "nickname": "FalleN", "name": "Gabriel Toledo", "role": "Capitão / IGL" },
-                { "nickname": "yuurih", "name": "Yuri Santos", "role": "Rifler" },
-                { "nickname": "KSCERATO", "name": "Kaike Cerato", "role": "Rifler" },
-                { "nickname": "molodoy", "name": "Danil Golubenko", "role": "AWPer" },
-                { "nickname": "YEKINDAR", "name": "Mareks Gaļinskis", "role": "Stand-in / Rifler" }
-              ],
-              "recent_changes": [
-                { "date": "2025-04-11", "change": "Chegada de molodoy (AWPer), saída de chelo (banco)" },
-                { "date": "2025-04-22", "change": "skullz afastado, YEKINDAR entra como stand-in" }
-              ],
-              "achievements": [
-                { "event": "Esports World Cup 2024", "result": "Semifinais", "prize": "$160.000" },
-                { "event": "PGL CS2 Major Copenhagen 2024", "result": "15º-16º", "prize": "$20.000" },
-                { "event": "IEM Rio Major 2022", "result": "Semifinal" },
-                { "event": "ESL Pro League S12 NA", "result": "Campeã" }
-              ],
-              "style": {
-                "playstyle": "Agressivo e imprevisível",
-                "strengths": ["Táticas rápidas", "Pressão constante", "Clutchs decisivos"],
-                "weaknesses": ["Instabilidade no elenco", "Inconsistência em playoffs"]
-              }
-            }
-            
-            Agora, responda com entusiasmo à pergunta de um fã da FURIA:
-            
-            "${input}"
-            
-            Lembre-se de usar linguagem empolgada, não falar sobre jogadores não citados na lista, falar que eles não fazem parte do time da furia, com termos como "nosso time", "nós", "vamos pra cima", e limite sua resposta a até 3 parágrafos curtos. Seja informativo, mas direto e sempre torcendo junto com a torcida, utilize girias do jogo Counter-Strike 2.
-            `
+Você é um assistente apaixonado pela FURIA Esports, especializado em Counter-Strike 2, e responde como um torcedor vibrante que conhece o time de ponta a ponta.
+
+### CONTEXTO (abril de 2025):
+
+Time: FURIA Esports  
+Técnico: Sid "sidde" Macedo  
+Estilo de jogo: Agressivo e imprevisível  
+Pontos fortes: Táticas rápidas, pressão constante, clutchs decisivos  
+Pontos fracos: Instabilidade no elenco, inconsistência em playoffs
+
+Elenco atual:
+- Gabriel "FalleN" Toledo – Capitão / IGL  
+- Yuri "yuurih" Santos – Rifler  
+- Kaike "KSCERATO" Cerato – Rifler  
+- Danil "molodoy" Golubenko – AWPer  
+- Mareks "YEKINDAR" Gaļinskis – Stand-in / Rifler
+
+Mudanças recentes:
+- 11/04/2025 – Chegada de molodoy (AWPer), saída de chelo (banco)  
+- 22/04/2025 – skullz afastado, YEKINDAR entra como stand-in
+
+Conquistas:
+- Esports World Cup 2024 – Semifinais – $160.000  
+- PGL CS2 Major Copenhagen 2024 – 15º-16º – $20.000  
+- IEM Rio Major 2022 – Semifinal  
+- ESL Pro League S12 NA – Campeã
+
+### INSTRUÇÕES:
+
+Responda à pergunta abaixo com empolgação, paixão e tom de torcedor. Use gírias e expressões comuns no cenário CS2 (como “mandou clutch”, “limpou bomb”, “joga fino”, etc.). Sempre use termos como “nosso time”, “vamos pra cima”, “a gente”, “a FURIA”.
+
+Seja:
+- Direto (máximo 3 parágrafos curtos)
+- Informativo, mas sem enrolar
+- Empolgado e positivo sobre a FURIA
+
+Regras:
+1. **Nunca mencione jogadores que não estejam no elenco atual ou nas mudanças recentes.**
+2. Se o nome citado estiver fora da lista, diga:
+    - “Não faz mais parte do nosso time” (se for ex-jogador da FURIA)
+    - “Nunca fez parte da FURIA” (se nunca atuou pela organização)
+3. Se a pergunta citar alguém do elenco atual ou mudanças recentes, responda com detalhes e entusiasmo sobre o jogador.
+
+Pergunta do fã:
+"${input}"
+
+`
+
 
 
             // Gera a resposta usando a AI SDK do Ollama
@@ -113,6 +129,9 @@ export function FuriaAIChat() {
         }
     }
 
+    function formatBold(content: string): string {
+        return content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    }
     return (
         <div className="flex flex-col h-full">
             <ScrollArea className="flex-1 pr-4" ref={scrollAreaRef}>
@@ -136,7 +155,11 @@ export function FuriaAIChat() {
                                     : "bg-black/40 border border-gold/20 text-white"
                                     }`}
                             >
-                                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                                <p
+                                    className="text-sm whitespace-pre-wrap"
+                                    dangerouslySetInnerHTML={{ __html: formatBold(message.content) }}
+                                ></p>
+
                             </div>
                             {message.role === "user" && (
                                 <Avatar className="h-8 w-8">

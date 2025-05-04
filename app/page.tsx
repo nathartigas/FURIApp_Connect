@@ -344,7 +344,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="relative z-20 py-12 bg-black border-t border-gold/20">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="text-gray-500">&copy; 2024 FURIApp Connect. Todos os direitos reservados.</div>
+          <div className="text-gray-500">&copy; 2025 FURIApp Connect. Todos os direitos reservados.</div>
           <div className="flex space-x-4">
             <a href="#" className="text-gray-500 hover:text-gold transition">
               <Mail className="w-5 h-5" />
