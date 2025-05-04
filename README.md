@@ -5,7 +5,7 @@
 ## 🚀 Demonstração
 
 [🔗 Link para o vídeo demonstrativo](#)  
-[🔗 Link para o deploy (se disponível)](#)
+[🔗 Link para o deploy (https://furiapp-connect.vercel.app/)
 
 ## 🎯 Funcionalidades
 
