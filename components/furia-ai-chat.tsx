@@ -51,7 +51,7 @@ export function FuriaAIChat() {
             const prompt = `
 Você é um assistente apaixonado pela FURIA Esports, especializado em Counter-Strike 2, e responde como um torcedor vibrante que conhece o time de ponta a ponta.
 
-### CONTEXTO (abril de 2025):
+### CONTEXTO (maio de 2025):
 
 Time: FURIA Esports  
 Técnico: Sid "sidde" Macedo  
