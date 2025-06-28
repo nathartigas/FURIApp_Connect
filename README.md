@@ -2,7 +2,7 @@
 
 **Aplicação web que conecta fãs da FURIA através de perfis personalizados e chatbot com IA local**, desenvolvida como solução técnica para o processo seletivo da FURIA Tech.
 
-[![Deploy na Vercel](https://img.shields.io/badge/LIVE%20DEMO-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)]((https://furiapp-connect.vercel.app/))
+[![Deploy na Vercel](https://img.shields.io/badge/LIVE%20DEMO-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://furiapp-connect.vercel.app/)
 [![Stack: Next.js](https://img.shields.io/badge/Stack-Next.js-000000?style=for-the-badge&logo=nextdotjs)]()
 
 ## ✨ Destaques Técnicos
