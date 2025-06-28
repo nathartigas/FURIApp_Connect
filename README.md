@@ -1,87 +1,97 @@
-# 🐈‍⬛ FURIApp Connect
+# 🚀 FURIApp Connect - Plataforma de Conexão Inteligente para Fãs da FURIA
 
-**FURIApp Connect** é um aplicativo web criado para o desafio técnico da FURIA Tech. Seu objetivo é conectar fãs da equipe FURIA através de perfis personalizados e interação inteligente com uma IA que entende o universo FURIA.
+**Aplicação web que conecta fãs da FURIA através de perfis personalizados e chatbot com IA local**, desenvolvida como solução técnica para o processo seletivo da FURIA Tech.
 
-## 🚀 Demonstração
+[![Deploy na Vercel](https://img.shields.io/badge/LIVE%20DEMO-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)]((https://furiapp-connect.vercel.app/))
+[![Stack: Next.js](https://img.shields.io/badge/Stack-Next.js-000000?style=for-the-badge&logo=nextdotjs)]()
 
-[🔗 Link para o deploy](https://furiapp-connect.vercel.app/)
+## ✨ Destaques Técnicos
+- **Chatbot com LLM local** via Ollama (sem dependência de APIs externas)
+- **Geração de perfis personalizados** baseada em preferências do usuário
+- **Sistema de match** entre fãs com perfis compatíveis
+- **Arquitetura modular** com TypeScript e Tailwind CSS
 
-## 🎯 Funcionalidades
-
-- **Landing Page**: Apresentação do projeto com identidade visual da FURIA.
-- **Formulário do Fã**: Coleta de informações como jogador favorito, mapa preferido e estilo de torcedor.
-- **Geração de Perfil**: Perfil exclusivo gerado com base nas respostas do fã.
-- **Match entre Fãs**: Sugestões de fãs com perfis semelhantes.
-- **IA FURIApp**: Chat inteligente alimentado por um modelo local da plataforma [Ollama](https://ollama.com/), que conversa com o fã usando contexto do seu perfil.
-- **Página "Sobre"**: Informações sobre a proposta do projeto, stack utilizada e equipe (você!).
-
-## 🤖 Integração com IA
-
-A aplicação inclui um chatbot local baseado em modelos LLM servidos via **Ollama**, permitindo:
-
-- Conversas contextuais personalizadas para cada fã.
-- Recomendações de conteúdos e curiosidades sobre a FURIA.
-- Geração de respostas sem depender de APIs externas, garantindo privacidade e performance.
-
-> Para rodar a IA localmente, é necessário ter o Ollama instalado na máquina.
-
-## 🛠️ Tecnologias Utilizadas
-
-- [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Ollama](https://ollama.com/) – para LLM local
-
-## 📁 Estrutura de Pastas
-
+## 🧠 IA Contextualizada (Ollama Integration)
+```mermaid
+graph LR
+    A[Formulário do Fã] --> B(Perfil Personalizado)
+    B --> C[Chatbot IA]
+    C --> D[Ollama Local]
+    D --> E[Respostas Contextuais]
 ```
-├── app/
-├── components/
-├── lib/
-├── styles/
-├── public/
-├── .vscode/
-├── package.json
-├── tailwind.config.ts
-├── tsconfig.json
-└── README.md
+- **Modelos suportados:** Mistral, Llama2, ou outros via Ollama
+- **Contexto dinâmico:** Utiliza dados do perfil para personalizar respostas
+- **Privacidade:** Processamento 100% local
+
+## 🛠️ Tech Stack
+| Camada          | Tecnologias                                                                 |
+|-----------------|-----------------------------------------------------------------------------|
+| **Frontend**    | Next.js, React, TypeScript, Tailwind CSS, Shadcn/ui                         |
+| **IA**          | Ollama (mistral, llama2), LangChain (opcional)                              |
+| **Hospedagem**  | Vercel                                                                      |
+| **Ferramentas** | VS Code, Git, Ollama CLI                                                    |
+
+## ⚙️ Como Executar Localmente
+
+### Pré-requisitos
+- Node.js >= 18.x
+- [Ollama instalado](https://ollama.com/download)
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/nathartigas/FURIApp_Connect.git
+
+# 2. Instale dependências
+npm install
+
+# 3. Inicie o modelo de IA (terminal separado)
+ollama run mistral  # ou seu modelo preferido
+
+# 4. Execute a aplicação
+npm run dev
+```
+Acesse: http://localhost:3000
+
+## 📂 Estrutura de Código
+```bash
+src/
+├── app/           # Rotas da aplicação
+├── components/    # Componentes reutilizáveis
+│   ├── ui/        # Componentes do Shadcn/ui
+│   ├── chat/      # Lógica do chatbot
+│   └── profile/   # Geração de perfis
+├── lib/           # Utilitários e integração com Ollama
+├── types/         # Tipos TypeScript
+└── public/        # Assets estáticos
 ```
 
-## 🔧 Como Rodar Localmente
+## 🎯 Funcionalidades Implementadas
+| Funcionalidade       | Status | Dificuldade | Observações                     |
+|----------------------|--------|-------------|---------------------------------|
+| Landing Page         | ✅     | ⭐☆☆☆☆      | Design responsivo               |
+| Formulário do Fã     | ✅     | ⭐⭐☆☆☆     | Validação em tempo real         |
+| Geração de Perfil    | ✅     | ⭐⭐⭐☆☆     | Algoritmo de matching           |
+| Chat com IA Local    | ✅     | ⭐⭐⭐⭐☆     | Integração complexa com Ollama  |
+| Sistema de Match     | ✅     | ⭐⭐⭐☆☆     | Comparação de perfis           |
+| Deploy na Vercel     | ✅     | ⭐⭐☆☆☆     | Configuração CI/CD              |
 
-1. **Clone o repositório**:
+## 📌 Desafios Técnicos Superados
+1. **Integração Ollama-Frontend:** 
+   - Solução: Comunicação via fetch API com endpoint local
+   - Desafio: Gerenciamento de sessões de chat
 
-   ```bash
-   git clone https://github.com/nathartigas/FURIApp_Connect.git
+2. **Personalização de Respostas:**
+   - Implementação: Injeção de contexto no prompt do LLM
+   ```typescript
+   const prompt = `Você é um assistente da FURIA. O usuário é fã do jogador ${userPlayer}. Responda: ${userInput}`
    ```
 
-2. **Instale as dependências**:
+3. **Otimização de Performance:**
+   - Técnicas: Cache de respostas, streaming de tokens
 
-   ```bash
-   npm install
-   ```
+## ✍️ Autora
+**Nathalia Artigas**  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/nathalia-calazans-artigas-741b0b277/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github)](https://github.com/nathartigas)
 
-3. **Inicie o backend da IA (Ollama)**:
-
-   - Instale o Ollama: [https://ollama.com/download](https://ollama.com/download)
-   - Rode o modelo local desejado:
-
-     ```bash
-     ollama run mistral
-     ```
-
-   *(ou outro modelo compatível com o projeto)*
-
-4. **Inicie o app**:
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Acesse no navegador**:
-
-   [http://localhost:3000](http://localhost:3000)
-
-- **Nathalia Artigas**  
-  [LinkedIn]([https://www.linkedin.com/in/nathalia-artigas/](https://www.linkedin.com/in/nathalia-calazans-artigas-741b0b277/)) | [GitHub](https://github.com/nathartigas)
+> Projeto desenvolvido como parte do processo seletivo para a FURIA Tech - Maio/2025
